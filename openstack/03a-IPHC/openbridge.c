@@ -18,7 +18,10 @@ void openbridge_triggerData() {
    uint8_t           input_buffer[136];//worst case: 8B of next hop + 128B of data
    OpenQueueEntry_t* pkt;
    uint8_t           numDataBytes;
-  
+   
+   // poipoi
+   leds_error_toggle();
+   
    numDataBytes = openserial_getNumDataBytes();
   
    //poipoi xv
