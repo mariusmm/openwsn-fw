@@ -44,7 +44,12 @@ void uinject_receive(OpenQueueEntry_t* pkt) {
    
    openqueue_freePacketBuffer(pkt);
    
-   leds_error_toggle();
+   openserial_printError(
+      COMPONENT_UINJECT,
+      ERR_RCVD_ECHO_REPLY,
+      (errorparameter_t)0,
+      (errorparameter_t)0
+   );
 }
 
 //=========================== private =========================================
