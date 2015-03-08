@@ -23,9 +23,8 @@ while True:
     
     print 'received "{0}" from [{1}]:{2}'.format(counter,hisAddress,hisPort)
     
-    '''
     # send back a reply
     socket_handler.sendto('poipoi',(hisAddress,hisPort))
     
     print 'reply sent.'
-    '''
+
