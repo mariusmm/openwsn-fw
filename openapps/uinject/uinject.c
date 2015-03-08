@@ -37,6 +37,11 @@ void uinject_init() {
 }
 
 void uinject_sendDone(OpenQueueEntry_t* msg, owerror_t error) {
+   
+   if (error!=E_SUCCESS) {
+      leds_error_toggle();;
+   }
+   
    openqueue_freePacketBuffer(msg);
 }
 
