@@ -73,6 +73,23 @@ void idmanager_setIsDAGroot(bool newRole) {
    ENABLE_INTERRUPTS();
 }
 
+bool idmanager_getIsIPv6Bridge() {
+   bool res;
+   INTERRUPT_DECLARATION();
+
+   DISABLE_INTERRUPTS();
+   res=idmanager_vars.isIPv6Bridge;
+   ENABLE_INTERRUPTS();
+   return res;
+}
+
+void idmanager_setIsIPv6Bridge(bool newRole) {
+   INTERRUPT_DECLARATION();
+   DISABLE_INTERRUPTS();
+   idmanager_vars.isIPv6Bridge = newRole;
+   ENABLE_INTERRUPTS();
+}
+
 open_addr_t* idmanager_getMyID(uint8_t type) {
    open_addr_t* res;
    INTERRUPT_DECLARATION();

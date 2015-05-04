@@ -7,7 +7,7 @@
 #include "forwarding.h"
 #include "neighbors.h"
 #include "openbridge.h"
-
+#include "IPv6Bridge.h"
 //=========================== variables =======================================
 
 //=========================== prototypes ======================================
@@ -227,7 +227,11 @@ void iphc_receive(OpenQueueEntry_t* msg) {
    // then regular header
    iphc_retrieveIPv6Header(msg,&ipv6_header);
    
-   if (idmanager_getIsDAGroot()==FALSE ||
+   // if this mote is a IPv6 router, inflate the packet and send it to the ethernet port
+   if (idmanager_getIsIPv6Bridge()==TRUE) {
+	   // TODO call proper function
+	   IPv6bridge_receive(msg);
+   } else if (idmanager_getIsDAGroot()==FALSE ||
       packetfunctions_isBroadcastMulticast(&(ipv6_header.dest))) {
       packetfunctions_tossHeader(msg,ipv6_header.header_length);
       
